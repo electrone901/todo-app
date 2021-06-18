@@ -13,4 +13,4 @@ A web app for quick notes  where anyone can create notes, reminders, and  save t
 
 ## Preview
 - Landing
-![Home](https://raw.githubusercontent.com/electrone901/notes-app/main/notes.png"Home")
+![Home](https://raw.githubusercontent.com/electrone901/notes-app/main/notes.png "Home")
