@@ -1,79 +1,31 @@
-const addBtn = document.getElementById('add');
-const notes = JSON.parse(localStorage.getItem('notes'));
+const form = document.getElementById('form');
+const input = document.getElementById('input');
+const todos = document.getElementById('todos');
 
-if (notes) {
-  notes.forEach((note) => {
-    addNewNote(note);
-  })
-}
 
-addBtn.addEventListener('click', () => {
-  addNewNote();
+form.addEventListener('submit', (e) => {
+  e.preventDefault();
+  addTodo();
 })
 
-function addNewNote(text = ' ') {
-  const note = document.createElement("div");
-  note.classList.add("note");
+function addTodo() {
+  const todoText = input.value;
 
-  note.innerHTML = `
-  <div class="notes">
-  <div class="tools">
-  <button class="edit">
-  <i class="fas fa-edit"></i>
-  </button>
-  <button class="delete">
-  <i class="fas fa-trash"></i>
-  </button>
-  </div>
+  if (todoText) {
+    const todoEl = document.createElement('li');
 
-  <div class="main ${text ? ' ' : "hidden"}"></div>
-  <textarea class="main ${text ? "hidden" : ""}"></textarea>
-  </div>
-  `;
+    todoEl.innerHTML = todoText;
 
-  const editBtn = note.querySelector(".edit");
-  const deleteBtn = note.querySelector(".delete");
+    todoEl.addEventListener('click', () => {
+      todoEl.classList.toggle('completed');
+    });
 
-  const main = note.querySelector(".main");
-  const textArea = note.querySelector("textarea");
+    todoEl.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      todoEl.remove();
+    });
 
-  textArea.value = text;
-  main.innerHTML = marked(text);
-
-  editBtn.addEventListener('click', () => {
-    main.classList.toggle('hidden')
-    textArea.classList.toggle('hidden')
-  });
-
-  deleteBtn.addEventListener('click', () => {
-    note.remove();
-    updateLS();
-  })
-
-  textArea.addEventListener('input', (e) => {
-    const { value } = e.target;
-
-    main.innerHTML = marked(value);
-
-    updateLS();
-    // localStorage.setItem('notes', value + [])
-  })
-  document.body.appendChild(note);
+    todos.appendChild(todoEl);
+    input.value = '';
+  }
 }
-
-
-function updateLS() {
-  const notesText = document.querySelectorAll('textarea');
-  const notes = [];
-
-  notesText.forEach((note) => {
-    notes.push(note.value);
-  })
-
-  localStorage.setItem('notes', JSON.stringify(notes));
-}
-
-
-
-
-
