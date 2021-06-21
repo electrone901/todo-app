@@ -1,5 +1,5 @@
 # CheapNY
-A web app for quick notes  where anyone can create notes, reminders, and  save them to the localstorage. Very convenient and lightweight  app.
+A web app for quick daily tod list  where anyone can create to dos, mark them as Done, and Delete them. You can also save them to the localstorage. Very convenient and lightweight  app.
 
 - [Web App](https://app4notes.netlify.app/)
 - [Mobile App Code](Coming Soon)
