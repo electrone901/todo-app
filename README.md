@@ -1,7 +1,7 @@
 # To Do App
 A web app for quick daily to do list where anyone can create to dos, mark them as Done, and Delete them. You can also save them to the localstorage. Very convenient and lightweight  app.
 
-- [Web App](https://app4notes.netlify.app/)
+- [Web App](https://4todos.netlify.app/)
 - [Mobile App Code](Coming Soon)
 
 ## Technologies Used
